@@ -28,10 +28,11 @@ model filme {
 }
 
 model User {
-  id    String  @id @default(cuid())
-  name  String  @unique
-  gmail String
-  image String? //vou ter que ver como posso colocar um arquivo aqui
+  id       String  @id @default(cuid())
+  name     String  @unique
+  password String  @default("senha123")
+  gmail    String
+  image    String? //vou ter que ver como posso colocar um arquivo aqui
 
   filme filme[]
 }

@@ -30,39 +30,39 @@ export async function fazerLogin(conta) {
   try {
     ////////CÓDIGO DE DEBUG////////
     ////essa declaração não deve ficar assim na versão final, ela deve ser uma constante criada apenas pelo BD
-    let contabd = {
-      nome: "null",
-      sala: null,
-      tipo: 1,
-      id: "semconta"
+    let contabd = { //acho que eu não deveria colocar "null" em tudo, mas fazer o que...
+        name: "null",
+        gmail: "null@gmail.com",
+        image: null,
+        id: "null",
     }
 
     if(conta.senha == "teste") {
       contabd = {
-        nome: conta.nome,
-        sala: '3NT',
-        tipo: 1,
-        id: "contateste"
+        name: conta.nome,
+        gmail: "teste@gmail.com",
+        image: null,
+        id: "teste",
       }
     } else if(conta.senha == "teste2") {
       contabd = {
-        nome: conta.nome,
-        sala: null,
-        tipo: 3,
-        id: "contateste2"
+        name: conta.nome,
+        gmail: "teste2@gmail.com",
+        image: null,
+        id: "teste2",
       }
     } else {
       ///////////////////////////////////
       // const contabd: user | null = await prisma.user.findUnique({
       contabd = await prisma.user.findUnique({
         where: {
-          nome: conta.nome,
-          senha: conta.senha,
+          name: conta.nome,
+          password: conta.senha,
         },
         select: {
-          nome: true,
-          sala: true,
-          tipo: true,
+          name: true,
+          gmail: true,
+          image: true,
           id: true
         },
       })
@@ -70,7 +70,7 @@ export async function fazerLogin(conta) {
     
     try {
       //////////DEBUG////////////
-      if(contabd?.nome == "null" || null) {
+      if(contabd?.name == "null" || null) {
         const resposta = {
           error: "usuário inválido",
           resultado: false,
@@ -161,7 +161,7 @@ export async function getCookies() {
 // }
 
 //variáveis
-const chavesecreta = 'caisdhfiq'
+const chavesecreta = "ianpeixinho"
 const key = new TextEncoder().encode(chavesecreta)
 
 //criptografia
