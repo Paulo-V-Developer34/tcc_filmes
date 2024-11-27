@@ -14,16 +14,24 @@ datasource db {
 }
 
 model filme {
-  id String @id @default(cuid())
-  title String
-  content String
-  image String //vou ter que ver como posso colocar um arquivo aqui
-  autor String
+  id        String  @id @default(cuid())
+  title     String
+  content   String
+  image     String? //vou ter que ver como posso colocar um arquivo aqui
+  autorname String
+  slug      String  @unique
+
+  Autor   User   @relation(fields: [autorID], references: [id])
+  autorID String
+
+  @@index([slug])
 }
 
-model user {
-  id String @id @default(cuid())
-  name String
+model User {
+  id    String  @id @default(cuid())
+  name  String  @unique
   gmail String
-  image String //vou ter que ver como posso colocar um arquivo aqui
+  image String? //vou ter que ver como posso colocar um arquivo aqui
+
+  filme filme[]
 }

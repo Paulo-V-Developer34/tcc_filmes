@@ -1,105 +1,95 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-const initialUsers: Prisma.UserCreateInput[] = [
+const initialUsers = [
   {
-    nome: 'Paulo Victor Nunes Cunha',
-    sala: '3NT',
-    senha: 'Senhasegura',
+    id: "asdfqr2134",
+    name: "Paulo Victor",
+    gmail: "paulo@gmail.com"
   },
   {
-    nome: 'Ian Peixinho Barbosa',
-    sala: '3NT',
+    id: "asdfq4rqwefr4",
+    name: "Ian Peixinho",
+    gmail: "ian@gmail.com"
   },
   {
-    nome: 'Isac Monteiro Barbosa',
-    sala: '2A',
-  },
-  {
-    nome: 'Diretor da Escola',
-    senha: 'Senhasupersegura',
-    tipo: 3,
-  },
-  {
-    nome: 'Aluno ajudante da escola',
-    sala: '1C',
-    tipo: 2,
+    id: "asdaere",
+    name: "Beatris Simi",
+    gmail: "beatris@gmail.com"
   },
 ]
 
-const initialNoticias: Prisma.NoticiaCreateInput[] = [
+const initialFilmes = [
   {
-    title: 'Notícia interessante',
-    slug: 'noticia-interessante',
-    intro:
-      'Essa notícia é a mais incrível de todas as notícias que você já viu na vida',
-    content:
-      'Essa notícia conta a história de como a notícia mais incrível do mundo foi criada, ela é realmente muito incrível',
-    nomeautor: 'Diretor da Escola',
+    id: "awheerf",
+    title: "Peppa Pig",
+    content: "Esse é um filme de ação e aventura, que envolve culinária e muita diversão",
+    autorname: "Ian Peixinho", //estava dando erro pois eu esqueci de colocar esse dado, por isso o TS é melhor ;-;
     Autor: {
       connectOrCreate: {
         where: {
-          nome: 'Diretor da Escola',
+          name: 'Ian Peixinho',
         },
         create: {
-          nome: 'Vice diretor da escola',
+          name: 'Ian Peixinho',
+          gmail: 'ian@gmail.com'
         },
-      },
+      }
     },
+    slug: "peppa-pig"
   },
   {
-    title: 'Notícia interessante pt2',
-    slug: 'noticia-interessante-pt2',
-    intro:
-      'Essa notícia é a mais incrível de todas as notícias que você já viu na vida',
-    content:
-      'Essa notícia conta a história de como a notícia mais incrível do mundo foi criada, ela é realmente muito incrível',
-    nomeautor: 'Diretor da Escola',
+    id: "awheyfiuqwhf",
+    title: "Os Carecas",
+    content: "Esse é um filme de ação e aventura, que envolve culinária e muita diversão",
+    autorname: "Ian Peixinho", //estava dando erro pois eu esqueci de colocar esse dado, por isso o TS é melhor ;-;
     Autor: {
       connectOrCreate: {
         where: {
-          nome: 'Diretor da Escola',
+          name: 'Ian Peixinho',
         },
         create: {
-          nome: 'Vice diretor da escola',
+          name: 'Ian Peixinho',
+          gmail: 'ian@gmail.com'
         },
-      },
+      }
     },
+    slug: "os-carecas"
   },
   {
-    title: 'Notícia interessante pt3',
-    slug: 'noticia interessante-pt3',
-    intro:
-      'Essa notícia é a mais incrível de todas as notícias que você já viu na vida',
-    content:
-      'Essa notícia conta a história de como a notícia mais incrível do mundo foi criada, ela é realmente muito incrível',
-    nomeautor: 'Diretor da Escola',
+    id: "asdjhfkjefj",
+    title: "IAM",
+    content: "Esse é um filme que conta a história de um jovem chamado Ian Peixinho, que passa por muitas aventuras no ensino médio",
+    autorname: "Ian Peixinho", //estava dando erro pois eu esqueci de colocar esse dado, por isso o TS é melhor ;-;
     Autor: {
       connectOrCreate: {
         where: {
-          nome: 'Diretor da Escola',
+          name: 'Ian Peixinho',
         },
         create: {
-          nome: 'Vice diretor da escola',
+          name: 'Ian Peixinho',
+          gmail: 'ian@gmail.com'
         },
-      },
+      }
     },
+    slug: "iam"
   },
+  
 ]
 
 async function main() {
   console.log('Começando a semear dados...')
-  //   for (const user of initialUsers) {
-  //     const newuser = await prisma.user.create({
-  //       data: user,
-  //     })
-  //     console.log(`user com o Nome ${newuser.nome} foi inserido`)
-  //   }
-  for (const noticia of initialNoticias) {
-    const newnoticia = await prisma.noticia.create({
-      data: noticia,
+  for (const user of initialUsers) {
+    const newuser = await prisma.user.create({
+      data: user,
     })
-    console.log(`noticia com o título ${newnoticia.title} foi inserido`)
+    console.log(`user com o Nome ${newuser.name} foi inserido`)//estava ocorrendo um erro pois eu estava colocando "nome" ao invés de "name", é por isso que TypeScript é melhor
+  }
+  for (const filme of initialFilmes) {
+    const newfilme = await prisma.filme.create({
+      data: filme,
+    })
+    console.log(`filme com o título ${newfilme.title} foi inserido`)
   }
   console.log('Semeação concluída')
 }
