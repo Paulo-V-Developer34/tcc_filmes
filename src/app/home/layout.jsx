@@ -1,5 +1,4 @@
 import Nav from "@/components/Nav";
-import "./globals.css";
 
 export const metadata = {
   title: "Ian Filmes - Home",
@@ -8,7 +7,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <main>
+    <main className="pt-16">
       <Nav/>
       {children}
     </main>

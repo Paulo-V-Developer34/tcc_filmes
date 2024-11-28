@@ -1,10 +1,10 @@
 'use server'
 
 import prisma from '@/lib/db'
-import { type JWTPayload, jwtVerify, SignJWT } from 'jose'
+import { jwtVerify, SignJWT } from 'jose'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
-import { type NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 //CRIPTOGRAFIA
 //encriptografar
@@ -37,14 +37,14 @@ export async function fazerLogin(conta) {
         id: "null",
     }
 
-    if(conta.senha == "teste") {
+    if(conta.senha === "teste") {
       contabd = {
         name: conta.nome,
         gmail: "teste@gmail.com",
         image: null,
         id: "teste",
       }
-    } else if(conta.senha == "teste2") {
+    } else if(conta.senha === "teste2") {
       contabd = {
         name: conta.nome,
         gmail: "teste2@gmail.com",
@@ -70,7 +70,7 @@ export async function fazerLogin(conta) {
     
     try {
       //////////DEBUG////////////
-      if(contabd?.name == "null" || null) {
+      if(contabd?.name === "null" || null) {
         const resposta = {
           error: "usuário inválido",
           resultado: false,
@@ -98,7 +98,7 @@ export async function fazerLogin(conta) {
       console.log('login feito')
       return respota
     } catch (error) {
-      let mensagemErro: string
+      let mensagemErro
 
       if (error instanceof Error) {
         mensagemErro = error.message
@@ -113,7 +113,7 @@ export async function fazerLogin(conta) {
       return resposta
     }
   } catch (error) {
-    let mensagemErro: string
+    let mensagemErro
 
     if (error instanceof Error) {
       console.log('entrou no if do 1 try catch')

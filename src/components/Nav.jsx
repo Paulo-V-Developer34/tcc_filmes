@@ -1,4 +1,6 @@
 import UsuarioLogado from "./Usuario";
+import { urlpath } from "@/app/layout";
+
 //Barra de navegação
 export default function Nav(){
     return (

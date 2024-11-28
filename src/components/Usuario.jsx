@@ -1,8 +1,9 @@
 'use client'
 
-import { getCookies} from '@/utils/session'
+import { getCookies} from '@/utils/session'//O getCookies não está funcionando como deveria
 import { useEffect, useState } from 'react'
 
+//Por algum motivo isso não está funcionando como deveria
 export default function UsuarioLogado() {
     //pegando os dados do usuário
   const [cookies, setCookies] = useState(null)

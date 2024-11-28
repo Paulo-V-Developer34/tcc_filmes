@@ -1,3 +1,5 @@
+import Filmes from "@/components/Filmes"
+
 export default function Home() {
     return (
         <section>

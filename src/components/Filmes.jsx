@@ -2,7 +2,7 @@ import prisma from '@/lib/db'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default async function Avisos() {
+export default async function Filmes() {
   //Pegando todas os filmes
   const filmesdb = await prisma.filme.findMany()
 
