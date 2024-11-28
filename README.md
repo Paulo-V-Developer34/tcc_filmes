@@ -33,4 +33,5 @@ npm run dev
 
 ## Notas de desenvolvimento
 
-1. É aconselhável não mexer em nada do código sem antes falar comigo para não dar erro
+1. O código está **DESCONTINUADO**, porquanto outro projeto de TCC está sendo feito em lugar dele, talvez um dia ele seja continuado, porém talvez eu refaça-o em **typescript**
+2. É aconselhável não mexer em nada do código sem antes falar comigo para não dar erro
