@@ -14,12 +14,13 @@ datasource db {
 }
 
 model filme {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   title     String
   content   String
   image     String? //vou ter que ver como posso colocar um arquivo aqui
   autorname String
-  slug      String  @unique
+  slug      String   @unique
+  dtpost    DateTime @default(now())
 
   Autor   User   @relation(fields: [autorID], references: [id])
   autorID String
